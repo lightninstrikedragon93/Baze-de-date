@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Delete Product</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #fff;
+                color: #783d19; 
+                margin: 0;
+                padding: 0;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #783d19; 
+            }
+            form {
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fefae0;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            label {
+                display: block;
+                margin-bottom: 10px;
+                color: #783d19; 
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #b99470;
+                border-radius: 5px;
+                box-sizing: border-box;
+                margin-bottom: 20px;
+                font-size: 16px;
+                color: #783d19;
+            }
+            input[type="submit"] {
+                background-color: #c4661f;
+                color: #fefae0;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                width: 100%;
+                display: inline-block;
+            }
+            input[type="submit"]:hover {
+                background-color: #783d19;
+            }
+        </style>
+    </head>
+<body>
+    <h1>Delete Product</h1>
+    <form action="/admin/delete_product" method="post">
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="product_name" name="product_name"><br><br>
+        <input type="submit" value="Delete Product">
+    </form>
+</body>
+</html>

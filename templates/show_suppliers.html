@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #5f6f52;
+            margin: 0;
+            padding: 0;
+        }
+        input[type="text"],
+        input[type="number"], 
+        input[type="data"] , select{
+            width: 25%;
+            padding: 10px;
+            border: 1px solid #a9b388;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color:#5f6f52;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #5f6f52;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #a9b388;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #fefae0;
+        }
+
+    </style>
+</head>
+<body>
+<h2>Suppliers List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Supplier ID</th>
+                <th>Supplier Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for supplier in suppliers %}
+            <tr>
+                <td>{{ supplier['SupplierID'] }}</td>
+                <td>{{ supplier['SupplierName'] }}</td>
+                <td>{{ supplier['Email'] }}</td>
+                <td>{{ supplier['Phone'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

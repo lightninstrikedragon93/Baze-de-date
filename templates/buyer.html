@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buyer Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #5f6f52;
+            margin: 0;
+            padding: 0;
+        }
+        input[type="text"],
+        input[type="number"], 
+        input[type="data"] , select{
+            width: 25%;
+            padding: 10px;
+            border: 1px solid #a9b388;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color:#5f6f52;
+        }
+        
+        h1, h2, h3 {
+            text-align: center;
+            color: #5f6f52;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #a9b388;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #fefae0;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+            
+        }
+        input[type="submit"] {
+            background-color: #a9b388;
+            color: #fefae0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #5f6f52;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Buyer Page</h1>
+
+    <h2>Product List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Brand</th>
+                <th>Unit Price</th>
+                <th>Quantity Available</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product['ProductName'] }}</td>
+                <td>{{ product['Brand'] }}</td>
+                <td>{{ product['UnitPrice'] }}</td>
+                <td>{{ product['QuantityAvailable'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/buyer/add_to_cart" method="post">
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="product_name" name="product_name"><br>
+       
+        <label for="product_quantity">Quantity:</label>
+        <input type="number" id="product_quantity" name="product_quantity"><br>
+        <label for="product_sale_date">Sale Date:</label>
+        <input type="date" id="product_sale_date" name="product_sale_date"><br>
+        <br/>
+        <input type="submit" value="Add Product">
+    </form>
+    
+    <h2 style="text-align: center;">Checkout</h2>
+    <div id="checkout-info" style="text-align: center;">
+        Total Price: {{ total_price }}
+        <br><br/>
+    </div>
+
+    <form action="/buyer/payment_method" method="post">
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method" id="payment_method">
+            <option value="Cash">Cash</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Credit Card">Credit Card</option>
+        </select>
+        <br>
+        <label for="payment_transaction_status">Transaction Status:</label>
+        <select id="payment_transaction_status" name="payment_transaction_status">
+            <option value="Pending">Pending</option>
+            <option value="Success">Success</option>
+            <option value="Failed">Failed</option>
+        </select>
+        <br>
+        
+
+        <input type="submit" value="Payment">
+    </form>
+
+    <form action="/buyer/purchase" method="post">
+        <input type="submit" value="Purchase"> 
+    </form>
+</body>
+</html>

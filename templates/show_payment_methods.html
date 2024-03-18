@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payments List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #5f6f52;
+            margin: 0;
+            padding: 0;
+        }
+        input[type="text"],
+        input[type="number"], 
+        input[type="data"] , select{
+            width: 25%;
+            padding: 10px;
+            border: 1px solid #a9b388;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color:#5f6f52;
+        }
+        
+        h2{
+            text-align: center;
+            color: #5f6f52;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #a9b388;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #fefae0;
+        }
+    </style>
+</head>
+<body>
+<h2>Payments List</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Payment Method ID</th>
+                <th>Method Name</th>
+                <th>Transaction Mode</th>
+                <th>Transaction Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paymentMethod in paymentMethods %}
+            <tr>
+                <td>{{ paymentMethod['PaymentMethodID'] }}</td>
+                <td>{{ paymentMethod['MethodName'] }}</td>
+                <td>{{ paymentMethod['TransactionMode'] }}</td>
+                <th>{{ paymentMethod['TransactionStatus'] }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

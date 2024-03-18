@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #783d19; 
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fefae0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #783d19; 
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #783d19; 
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b99470;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #783d19; 
+        }
+
+        select option {
+            font-size: 16px;
+            padding: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b99470;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #783d19; 
+        }
+        input[type="submit"] {
+            background-color: #c4661f;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            display: inline-block;
+        }
+        input[type="submit"]:hover {
+            background-color: #783d19;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Product Details</h1>
+        <form action="/admin/add_product_details" method="post">
+            <label for="product_name">Product Name:</label>
+            <select id="product_name" name="product_name">
+                <option value="">Select Product</option>
+                {% for product in products %}
+                <option value="{{ product.product_name }}">{{ product.product_name }}</option>
+                {% endfor %}
+            </select><br>
+            
+            <label for="product_weight">Product Weight:</label>
+            <input type="number" id="product_weight" name="product_weight"><br>
+
+            <label for="product_bar_code">Product Bar Code:</label>
+            <input type="number" id="product_bar_code" name="product_bar_code"><br>
+
+            <input type="submit" value="Add Product Details">
+        </form>
+    </div>
+</body>
+</html>
